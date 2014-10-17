@@ -1,13 +1,13 @@
 <div class="container">
   <a href="/surveys/create">Create a survey</a>
-  
+
 
   <ul class="index">
-  
-  
+
+
  <li>
   <%@surveys.each do |survey|  %>
-    <p><a href='/take/'<%= survey.id %>>Take this survey</a></p>
+    <p><a href='/take_survey/<%= survey.id %>'>Take this survey</a></p>
   <%end%>
   </li>
 

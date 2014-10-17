@@ -1,0 +1,26 @@
+<div class="container">
+
+  <h2><%= @survey.title %></h2>
+
+  <ul>
+    <% @questions.each do |question| %>
+    <li><%= question.description %></li>
+      <ul>
+      <% @choices = Choice.where(question_id: question.id) %>
+      <% counter = 0 %>
+      <% @choices.each do |choice| %>
+
+        <form action="/take_survey/<%= choice.id %>" method="POST">
+          <input type="radio" name>
+          <% counter +=1%>
+          <li id="<%=counter%>"> <%= choice.option %></li>
+          <% end %>
+          </form>
+     </ul>
+
+    <% end %>
+
+
+  </ul>
+
+</div>
