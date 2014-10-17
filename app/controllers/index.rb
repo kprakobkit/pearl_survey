@@ -1,5 +1,3 @@
-# get main page '/surveys'
-# post '/surveys'
 get '/' do
   redirect '/surveys'
 end
@@ -21,12 +19,19 @@ post '/surveys' do
 end
 
 post '/surveys/add_question' do
-  p params
   content_type :json
   survey = Survey.last
   survey.questions << Question.create(description: params[:description])
   question = survey.questions.last
-  {description: question.description}.to_json
+  {description: question.description, question_id: question.id}.to_json
 end
 
+post '/surveys/add_choice' do
+  content_type :json
+  question = Question.find(params[:question_id])
+  question.choices << Choice.create(option: params[:option])
+  relation = question.choices
+  choice = relation.last
+  {option: choice.option, question_id: question.id}.to_json
+end
 

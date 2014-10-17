@@ -7,3 +7,6 @@
   <div class="choice_container">
   </div>
 </div>
+
+
+<div class='container' id='choice_box'> <form action='/surveys' method='POST' id='create_choice_form'> <label> Option: <input type='text' name='option'> </label> <input type='submit' value='Save'> </form> </div>

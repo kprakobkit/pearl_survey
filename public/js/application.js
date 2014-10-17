@@ -32,9 +32,26 @@ $(document).ready(function() {
       data: data
     }).done(function(data) {
       $('.questions_container').append($('<h3>Question: ' + data.description + '</h3>'));
+      var choiceFormHtml = "<div class='container' id='choice_box'" +"data-info='" + data.question_id + "'" + "> <form action='/surveys' method='POST' id='create_choice_form'> <label> Option: <input type='text' name='option'> </label> <input type='submit' value='Save'> </form> </div>"
+      $('.questions_container').append($(choiceFormHtml));
       $('#create_question_form').remove();
     });
   });
+//-------------------------------------------------------------//
+$('.container').on('submit','#create_choice_form', function(event){
+    event.preventDefault();
+    var question_id = $(this).parent().attr('data-info')
+    var data = ($(this).serialize()) + "&question_id=" + question_id;
+    var ajaxRequest = $.ajax({
+      url: '/surveys/add_choice',
+      type: 'POST',
+      data: data
+    }).done(function(data) {
+      var question_id = data.question_id;
+      var $dataInfoSelector = "[data-info='" + question_id + "']"
+      $($dataInfoSelector).append($('<p>Option: ' + data.option + '</p>'));
+    });
+});
 
 });
 });
