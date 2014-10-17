@@ -1,7 +1,9 @@
 <div class='question_box'>
-  <form action='/surveys' method='POST' id='create_question_form'>
+  <form action='/surveys/add_question' method='POST' id='create_question_form'>
     <label> Question:
       <input type='text' name='description'>
     </label> <input type='submit' value='Save'>
   </form>
+  <div class="choice_container">
+  </div>
 </div>

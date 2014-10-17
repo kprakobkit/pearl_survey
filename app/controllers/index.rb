@@ -21,8 +21,12 @@ post '/surveys' do
 end
 
 post '/surveys/add_question' do
+  p params
+  content_type :json
   survey = Survey.last
-  survey << Question.create(description: params[:description])
+  survey.questions << Question.create(description: params[:description])
+  question = survey.questions.last
+  {description: question.description}.to_json
 end
 
 
