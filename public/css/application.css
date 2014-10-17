@@ -1,4 +1,10 @@
+body {
+  font-family: Lato;
+  background: url('swirl_pattern.png')
+}
+
 .container {
+  background-color: white;
   border: 1px solid black;
   padding: 10px;
   margin: 0 auto;
