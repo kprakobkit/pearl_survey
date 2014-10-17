@@ -35,3 +35,9 @@ post '/surveys/add_choice' do
   {option: choice.option, question_id: question.id}.to_json
 end
 
+post '/surveys/:id/delete' do
+survey = Survey.find(params[:id])
+survey.destroy
+redirect '/surveys'
+end
+
