@@ -13,6 +13,8 @@ $(document).ready(function() {
     var questionFormHtml = "<div class='question_box'> <form action='/surveys/add_question' method='POST' id='create_question_form'> <label> Question: <input type='text' name='description'> </label> <input type='submit' value='Save'> </form> <div class='choice_container'> </div> </div>";
     $('.container').prepend($(questionFormHtml));
     $('.container').prepend($('<h1>Title: ' + data.title + '</h1>'));
+    //$('.container').append($("<button class='save_form_button'>Submit your survey!</button>"));
+    $('.save_form_button').css('display', 'inline')
     $('.add_question').css('display', 'inline');
   });
 
@@ -32,7 +34,7 @@ $(document).ready(function() {
       data: data
     }).done(function(data) {
       $('.questions_container').append($('<h3>Question: ' + data.description + '</h3>'));
-      var choiceFormHtml = "<div class='container' id='choice_box'" +"data-info='" + data.question_id + "'" + "> <form action='/surveys' method='POST' id='create_choice_form'> <label> Option: <input type='text' name='option'> </label> <input type='submit' value='Save'> </form> </div>"
+      var choiceFormHtml = "<div class='container' id='choice_box'" +"data-info='" + data.question_id + "'" + "> <form action='/surveys' method='POST' id='create_choice_form'> <label> Option: <input type='text' name='option' id='option_entry'> </label> <input type='submit' value='Save'> </form></div>"
       $('.questions_container').append($(choiceFormHtml));
       $('#create_question_form').remove();
     });
@@ -52,6 +54,7 @@ $('.container').on('submit','#create_choice_form', function(event){
       $($dataInfoSelector).append($('<p>Option: ' + data.option + '</p>'));
     });
 });
-
+//---------------------------------------------------------------//
+// $('.save_form_button').on('click')
 });
 });
