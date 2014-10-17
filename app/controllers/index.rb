@@ -35,3 +35,12 @@ post '/surveys/add_choice' do
   {option: choice.option, question_id: question.id}.to_json
 end
 
+get '/take_survey/:id' do
+  p @survey = Survey.find(params[:id])
+  @questions = Question.where(survey_id: @survey.id)
+  erb :take_survey
+end
+
+post '/choice/:id' do
+ @answer = Response.create(choice_id: params[:id])
+end

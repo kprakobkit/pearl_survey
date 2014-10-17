@@ -1,0 +1,24 @@
+<div class="container">
+
+  <h2><%= @survey.title %></h2>
+  <form action="/take_survey/<%= @survey.id %>" method="POST">
+
+  <div class="question">
+    <% @questions.each do |question| %>
+    <div class="question_description">
+      <%=question.description%>
+    </div>
+    <div class="choices">
+      <% choices = Choice.where(question_id: question.id)%>
+      <% choices.each do |choice|%>
+      <ul>
+        <li><input type="radio" name="<%=choice.question_id%>" value="monday"> <%=choice.option%></li>
+      </ul>
+      <%end%>
+    </div>
+    <%end%>
+  </div>
+  <input type="submit" value="submit my answers">
+
+  </form>
+</div>
