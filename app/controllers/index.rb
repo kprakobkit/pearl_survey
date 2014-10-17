@@ -41,6 +41,7 @@ get '/take_survey/:id' do
   erb :take_survey
 end
 
-post '/choice/:id' do
- @answer = Response.create(choice_id: params[:id])
+post '/take_survey/:id' do
+  response = Response.create(choice_id: params[:choice_id])
+  redirect '/'
 end

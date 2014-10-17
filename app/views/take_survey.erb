@@ -12,7 +12,7 @@
       <% choices = Choice.where(question_id: question.id)%>
       <% choices.each do |choice|%>
       <ul>
-        <li><input type="radio" name="<%=choice.question_id%>" value="monday"> <%=choice.option%></li>
+        <li><input type="radio" name="choice_id" value="<%=choice.id%>"> <%=choice.option%></li>
       </ul>
       <%end%>
     </div>
