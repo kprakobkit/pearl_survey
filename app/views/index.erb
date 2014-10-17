@@ -1,20 +1,17 @@
 <div class="container">
   <a href="/surveys/create">Create a survey</a>
-
-
   <ul class="index">
-
-
- <li>
-  <%@surveys.each do |survey|  %>
-    <p><%= survey.title %> </p>
-    <p><a href='/take/'<%= survey.id %>>Take this survey</a><form class='delete-survey' id='<%= survey.id %>' action='/surveys/<%= survey.id %>/delete' method='POST'><input type='submit' value='delete'>
-    </form></p>
-
-  <%end%>
-  </li>
-
+    <li>
+    <%@surveys.each do |survey|  %>
+    <div id='<%= survey.id %>'>
+      <p><%= survey.title %> </p>
+      <p><a href='/take/'<%= survey.id %>>Take this survey</a><form class='delete-survey' data-surveyid='<%= survey.id %>' action='/surveys/<%= survey.id %>/delete' method='POST'><input type='submit' value='delete'>
+      </form></p>
+    </div>
+    <%end%>
+    </li>
   </ul>
- </div>
+</div>
+
 
 

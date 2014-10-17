@@ -36,9 +36,10 @@ post '/surveys/add_choice' do
 end
 
 post '/surveys/:id/delete' do
+  content_type :json
   survey = Survey.find(params[:id])
   survey.destroy
-  redirect '/surveys'
+  {surveyid: survey.id}.to_json
 end
 
 
