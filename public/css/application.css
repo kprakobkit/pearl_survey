@@ -5,3 +5,19 @@
   width: 80%;
   margin-top: 20px;
 }
+
+button {
+	margin-top: 10px;
+}
+
+.save_form_button {display: none}
+
+.index li {
+	list-style-type: none;
+	display: inline-block;
+	padding-left: 1%;
+}
+
+.names {
+	margin-left: 2%;
+}
