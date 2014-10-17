@@ -8,7 +8,7 @@
  <li>
   <%@surveys.each do |survey|  %>
     <p><%= survey.title %> </p>
-    <p><a href='/take/'<%= survey.id %>>Take this survey</a><form action='/surveys/<%= survey.id %>/delete' method='POST'><input type='submit' value='delete'>
+    <p><a href='/take/'<%= survey.id %>>Take this survey</a><form class='delete-survey' id='<%= survey.id %>' action='/surveys/<%= survey.id %>/delete' method='POST'><input type='submit' value='delete'>
     </form></p>
 
   <%end%>

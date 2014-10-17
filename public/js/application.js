@@ -53,8 +53,27 @@ $('.container').on('submit','#create_choice_form', function(event){
       var $dataInfoSelector = "[data-info='" + question_id + "']"
       $($dataInfoSelector).append($('<p>Option: ' + data.option + '</p>'));
     });
+})
+
+$('.delete-survey').on('submit', function(event){
+  var form = this
+  // var that = this;
+  debugger;
+  event.preventDefault();
+  // var surveyid = $(this).data("surveyid");
+  // var deleteUrl = '/surveys/' + surveyid +'/delete'
+  var ajaxRequest = $.ajax({
+      url: deleteUrl,
+      type: 'POST',
+    }).done(function(data){
+      console.log("hello");
+    }).fail(function(){
+      console.log("failed");
+    })
 });
 //---------------------------------------------------------------//
 // $('.save_form_button').on('click')
+
 });
 });
+// ---------------------------------------------

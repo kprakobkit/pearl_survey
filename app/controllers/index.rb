@@ -36,8 +36,10 @@ post '/surveys/add_choice' do
 end
 
 post '/surveys/:id/delete' do
-survey = Survey.find(params[:id])
-survey.destroy
-redirect '/surveys'
+  survey = Survey.find(params[:id])
+  survey.destroy
+  redirect '/surveys'
 end
+
+
 
