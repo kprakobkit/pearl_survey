@@ -20,10 +20,9 @@ post '/surveys' do
   {title: survey.title}.to_json
 end
 
-# post '/surveys/add_question' do
-#   survey = Survey.last
-#   survey << Question.create(description: params[:description])
-
-# end
+post '/surveys/add_question' do
+  survey = Survey.last
+  survey << Question.create(description: params[:description])
+end
 
 
