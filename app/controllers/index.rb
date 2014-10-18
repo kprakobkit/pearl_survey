@@ -35,6 +35,13 @@ post '/surveys/add_choice' do
   {option: choice.option, question_id: question.id}.to_json
 end
 
+post '/surveys/:id/delete' do
+  content_type :json
+  survey = Survey.find(params[:id])
+  survey.destroy
+  {surveyid: survey.id}.to_json
+end
+
 get '/take_survey/:id' do
   p @survey = Survey.find(params[:id])
   @questions = Question.where(survey_id: @survey.id)
@@ -45,3 +52,11 @@ post '/take_survey/:id' do
   response = Response.create(choice_id: params[:choice_id])
   redirect '/'
 end
+
+get '/view_results/:id' do
+  # @survey = Survey.find(params[:id])
+  # @questions = survey.questions
+
+  erb :view_results
+end
+

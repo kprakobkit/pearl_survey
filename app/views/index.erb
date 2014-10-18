@@ -1,23 +1,19 @@
 <div class="container">
+  <h1>Survey Pearl</h1>
   <a href="/surveys/create">Create a survey</a>
-
-
   <ul class="index">
-
-
- <li>
-  <%@surveys.each do |survey|  %>
-    <p><a href='/take_survey/<%= survey.id %>'>Take this survey</a></p>
-  <%end%>
-  </li>
-
-  <li class="names">
-  <%@surveys.each do |survey|  %>
-    <p><%= survey.title %> </p>
-  <%end%>
-  </li>
-
+    <li>
+    <%@surveys.each do |survey|  %>
+    <div id='<%= survey.id %>'>
+      <p><%= survey.title %> </p>
+      <p><a href='/take_survey/<%= survey.id %>'>Take this survey</a><p><a href='/view_results/<%= survey.id %>'>View Results</a></p><form class='delete-survey' data-surveyid='<%= survey.id %>' action='/surveys/<%= survey.id %>/delete' method='POST'><input type='submit' value='Delete!'>
+      </form></p>
+      <hr>
+    </div>
+    <%end%>
+    </li>
   </ul>
- </div>
+</div>
+
 
 
