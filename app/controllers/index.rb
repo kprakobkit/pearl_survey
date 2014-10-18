@@ -54,8 +54,8 @@ post '/take_survey/:id' do
 end
 
 get '/view_results/:id' do
-  # @survey = Survey.find(params[:id])
-  # @questions = survey.questions
+  @survey = Survey.find(params[:id])
+  @questions = @survey.questions
 
   erb :view_results
 end
