@@ -42,5 +42,14 @@ post '/surveys/:id/delete' do
   {surveyid: survey.id}.to_json
 end
 
+get '/take_survey/:id' do
+  p @survey = Survey.find(params[:id])
+  @questions = Question.where(survey_id: @survey.id)
+  erb :take_survey
+end
 
+post '/take_survey/:id' do
+  response = Response.create(choice_id: params[:choice_id])
+  redirect '/'
+end
 

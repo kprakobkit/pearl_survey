@@ -6,7 +6,7 @@
     <%@surveys.each do |survey|  %>
     <div id='<%= survey.id %>'>
       <p><%= survey.title %> </p>
-      <p><a href='/take/'<%= survey.id %>>Take this survey</a><form class='delete-survey' data-surveyid='<%= survey.id %>' action='/surveys/<%= survey.id %>/delete' method='POST'><input type='submit' value='Delete!'>
+      <p><a href='/take_survey/<%= survey.id %>'>Take this survey</a><form class='delete-survey' data-surveyid='<%= survey.id %>' action='/surveys/<%= survey.id %>/delete' method='POST'><input type='submit' value='Delete!'>
       </form></p>
       <hr>
     </div>
